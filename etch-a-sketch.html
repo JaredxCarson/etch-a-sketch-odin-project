@@ -9,7 +9,20 @@
 
     <body>
         <h1>Etch-A-Sketch</h1>
-        <div container="container"></div>
+        <div class="container"></div>
+
+        <div class="buttons">
+            <!--resolutionInput is a label element, the 'for' attribute links the label to the input.
+            '8x8' is the default grid size-->
+            <label for="resolutionInput" class="resolutionLabel">8x8</label><br>
+            <input type="range" id="resolutionInput" min="2" max="16" value="8"></br>
+            <!--in line 18 we are creating the slider so that we can change the size of the grid.
+            'input type=range' defines a range slider input element. 'id=resolutionInput' gives the slider an ID-->
+
+            <button id="reset">Reset Grid</button>
+            <button id="color">Color</button>
+            <button id="default">Default</button>
+        </div>
 
         <script src="etch-a-sketch.js" defer></script>
     </body>

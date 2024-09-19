@@ -29,11 +29,48 @@ function createGrid() {
         //Added an Event Listener to each square so that it changes color when it is hovered
         grid.appendChild(gridDiv); //Appended child to the container
 }
-
+//Sets the grid layout to a number of rows and columns equal to numSquares (dynamic Grid layout)
 grid.style.gridTemplateColumns = `repeat(${numSquares}, 1fr)`
 grid.style.gridTemplateRows = `repeat(${numSquares}, 1fr)`
 }
 
 createGrid(numSquares);
 
-  
+//changeColor Function changes the color of the grid square when hovered
+function changeColor() {
+    //If the random color mode is active, this will generate a random RGB color
+    if (type === "randomColorMode") {
+        const randomR = Math.floor(Math.random() * 256); //Random Red Value
+        const randomG = Math.floor(Math.random() * 256); //Random Green Value
+        const randomB = Math.floor(Math.random() * 256); //Random Blue Value
+
+        e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+    } //This sets the background color of the hovered square to the random color
+    else if (type === "defaultColorMode") { //If default color mode is active then it will set the color to light blue
+        e.target.style.backgroundColor = 'lightblue';
+    }
+}
+  //Added event listener to the default button to activate default color mode (blanking the canvas)
+defaultColor.addEventListener('click', function() {
+    //setting color mode to default
+    type = "defaultColorMode";
+    //Adding an active class to visually indicate that the default button is active
+    this.classList.add("active");
+    //Removing the active class from the random color button
+    randomColor.classList.remove("active");
+});
+
+//Adding event listener to the random color button to activate random color mode
+randomColor.addEventListener('click', function() {
+    //Setting color mode to random
+    type = "randomColorMode";
+    //Adding an active class to visually indicate that the random color button is active
+    this.classList.add("active");
+    //Removing the active class from the default color button
+    defaultColor.classList.remove("active");
+})
+
+//Adding the active class to visually indicate that a button is active is referring to
+//when someone clicks on a button, the button will glow,change colors,show a border, etc
+//to indicate that it is selected. We can edit that using css
+

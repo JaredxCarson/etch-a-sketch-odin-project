@@ -1,15 +1,57 @@
-#container{
+body {
+    min-height: 100vh; /*ensures the body takes up 100% of viewport height */
+    text-align: center;
     display: flex;
-    flex-wrap: wrap;
-    width:700px;
-    height: 700px;
-    border: 1px solid black;
-};
+    flex-direction: column; /*Aligns child elements vertically */
+    justify-content: space-between; /*Distributes space between child elements */
+    align-items: center; /*Centers child elements horizontally within the body */
+}
 
-.square {
-    width: 40px;
-    height: 40px;
+
+.grid {
+    display: grid;
+    max-width: 400px;
+    max-height: 400px;
+    min-width: 400px; /*setting min and max dimensions to 400px makes the grid keep that size*/
+    min-height: 400px;
+    align-items: center;
+    justify-content: center;
     border: 1px solid black;
-    box-sizing: border-box;
-    background-color: red;
-};
+}
+
+.box {
+   display: flex;
+   height: 100%;
+   width: 100%;
+   border: 1px solid black;
+   border-radius: 4px; /*Slightly rounds the the corners of the boxes */
+   opacity: 1.0;
+   background-color: lightgray;
+   cursor: pointer; /*Changes the cursor to a pointer when hovering over the boxes */
+}
+
+.buttons {
+    border-radius: 10px;
+    width: 125px;
+    height: 75px;
+}
+
+.buttons.active {
+    border: 3px solid black;
+}
+
+button:hover { /*Transition refers to the animation that occurs*/
+    transition: all .5s; /*0.5s= Transition Duration*/
+    transition-timing-function: ease-in-out; /*ease-in-out makes transition start slow, speed up in middle then slow at the end*/
+    color: white;                           /*ease-in-out creates a smooth effect*/
+    background-color: black;
+    opacity: 50%;
+    filter: drop-shadow(4px 4px 20px #40e0d0); /*Adds a drop shadow for a glowing effect when hovered*/
+}
+
+.buttons button { /*more specific than just '.buttons'. this selects all buttons in the container*/
+    color: black;
+    background-color: lightblue;
+    font-weight: bold;
+}
+
